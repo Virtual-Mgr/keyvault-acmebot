@@ -363,3 +363,6 @@ FodyWeavers.xsd
 
 # Azure Resource Manager dependency files
 ServiceDependencies/
+
+
+__azurite_db_*.json

@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/azure-functions-dotnetcore-3.1
+{
+	"name": "Keyvault Acmebot",
+	"dockerFile": "Dockerfile",
+	"forwardPorts": [
+		7071
+	],
+	// Set *default* container specific settings.json values on container create.
+	"settings": {},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-azuretools.vscode-azurefunctions",
+		"ms-dotnettools.csharp"
+	],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "dotnet restore",
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+	"containerEnv": {
+		"Acmebot__AzureDns__SubscriptionId": "a25f9a86-51e8-42b3-801a-fe9e450c2964",
+		"Acmebot__Contacts": "steve.fillingham@virtualmgr.com",
+		"Acmebot__Endpoint": "https://acme-v02.api.letsencrypt.org/",
+		"Acmebot__Environment": "AzureCloud",
+		"Acmebot__VaultBaseUrl": "https://vm-keyvault.vault.azure.net/",
+		"Acmebot__Webhook": "https://hooks.slack.com/services/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",
+		"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=6af81fb9-7d82-4bb6-8d38-22b4c4cfdcf8;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/",
+		"APPLICATIONINSIGHTS_CONNECTION_STRING_OLD": "InstrumentationKey=6af81fb9-7d82-4bb6-8d38-22b4c4cfdcf8;EndpointSuffix=applicationinsights.azure.com",
+		"AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=stpvwply3ou4nvufunc;AccountKey=YzHnrEDY8c8Ihe4huJLMI27dluzBEhnBXvL7YApaLvFePODju6rHOi/HBgvEJ2JQwcdwRuC5tk4Kp2RpdlSf5A==;EndpointSuffix=core.windows.net",
+		"FUNCTIONS_EXTENSION_VERSION": "~3",
+		"FUNCTIONS_WORKER_RUNTIME": "dotnet",
+		"WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=stpvwply3ou4nvufunc;AccountKey=YzHnrEDY8c8Ihe4huJLMI27dluzBEhnBXvL7YApaLvFePODju6rHOi/HBgvEJ2JQwcdwRuC5tk4Kp2RpdlSf5A==;EndpointSuffix=core.windows.net",
+		"WEBSITE_CONTENTSHARE": "func-acmebot-kv-pvwp",
+		"WEBSITE_RUN_FROM_PACKAGE": "https://shibayan.blob.core.windows.net/azure-keyvault-letsencrypt/v3/latest.zip"
+	}
+}

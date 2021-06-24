@@ -6,6 +6,9 @@ using DurableTask.TypedProxy;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs.Extensions.Http;
 
 namespace KeyVault.Acmebot.Functions
 {
@@ -61,5 +64,18 @@ namespace KeyVault.Acmebot.Functions
         {
             Handle = ex => ex.InnerException?.InnerException is RetriableOrchestratorException
         };
+
+        [FunctionName(nameof(RenewCertificates) + "_" + nameof(HttpStart))]
+
+        public async Task HttpStart(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "renew")] HttpRequest req,
+            [DurableClient] IDurableClient starter,
+            ILogger log)
+        {
+            // Function input comes from the request content.
+            var instanceId = await starter.StartNewAsync(nameof(RenewCertificates) + "_" + nameof(Orchestrator));
+
+            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+        }
     }
 }
