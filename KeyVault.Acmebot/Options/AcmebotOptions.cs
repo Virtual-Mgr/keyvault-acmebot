@@ -24,6 +24,8 @@ namespace KeyVault.Acmebot.Options
 
         public string PreferredChain { get; set; }
 
+        public bool MitigateChainOrder { get; set; } = false;
+
         public ExternalAccountBindingOptions ExternalAccountBinding { get; set; }
 
         // Properties should be in alphabetical order
@@ -31,7 +33,11 @@ namespace KeyVault.Acmebot.Options
 
         public CloudflareOptions Cloudflare { get; set; }
 
+        public CustomDnsOptions CustomDns { get; set; }
+
         public DnsMadeEasyOptions DnsMadeEasy { get; set; }
+
+        public GandiOptions Gandi { get; set; }
 
         public GoDaddyOptions GoDaddy { get; set; }
 
